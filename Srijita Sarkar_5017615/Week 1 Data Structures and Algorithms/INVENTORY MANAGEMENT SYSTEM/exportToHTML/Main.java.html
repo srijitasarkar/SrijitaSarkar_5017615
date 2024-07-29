@@ -1,0 +1,129 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">java.util.HashMap</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.Map</span><span class="s0">;</span>
+
+<span class="s0">class </span><span class="s1">Product {</span>
+    <span class="s0">private </span><span class="s1">String productId</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">String productName</span><span class="s0">;</span>
+    <span class="s0">private int </span><span class="s1">quantity</span><span class="s0">;</span>
+    <span class="s0">private double </span><span class="s1">price</span><span class="s0">;</span>
+
+    <span class="s0">public </span><span class="s1">Product(String productId</span><span class="s0">, </span><span class="s1">String productName</span><span class="s0">, int </span><span class="s1">quantity</span><span class="s0">, double </span><span class="s1">price) {</span>
+        <span class="s0">this</span><span class="s1">.productId = productId</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.productName = productName</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.quantity = quantity</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.price = price</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getProductId() {</span>
+        <span class="s0">return </span><span class="s1">productId</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getProductName() {</span>
+        <span class="s0">return </span><span class="s1">productName</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public int </span><span class="s1">getQuantity() {</span>
+        <span class="s0">return </span><span class="s1">quantity</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setQuantity(</span><span class="s0">int </span><span class="s1">quantity) {</span>
+        <span class="s0">this</span><span class="s1">.quantity = quantity</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public double </span><span class="s1">getPrice() {</span>
+        <span class="s0">return </span><span class="s1">price</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setPrice(</span><span class="s0">double </span><span class="s1">price) {</span>
+        <span class="s0">this</span><span class="s1">.price = price</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public </span><span class="s1">String toString() {</span>
+        <span class="s0">return </span><span class="s2">&quot;Product ID: &quot; </span><span class="s1">+ productId + </span><span class="s2">&quot;, Name: &quot; </span><span class="s1">+ productName + </span><span class="s2">&quot;, Quantity: &quot; </span><span class="s1">+ quantity + </span><span class="s2">&quot;, Price: &quot; </span><span class="s1">+ price</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+
+<span class="s0">class </span><span class="s1">Inventory {</span>
+    <span class="s0">private </span><span class="s1">Map&lt;String</span><span class="s0">, </span><span class="s1">Product&gt; products</span><span class="s0">;</span>
+
+    <span class="s0">public </span><span class="s1">Inventory() {</span>
+        <span class="s0">this</span><span class="s1">.products = </span><span class="s0">new </span><span class="s1">HashMap&lt;&gt;()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">addProduct(Product product) {</span>
+        <span class="s0">if </span><span class="s1">(products.containsKey(product.getProductId())) {</span>
+            <span class="s1">System.out.println(</span><span class="s2">&quot;Product ID &quot; </span><span class="s1">+ product.getProductId() + </span><span class="s2">&quot; already exists. Use updateProduct to update it.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s1">products.put(product.getProductId()</span><span class="s0">, </span><span class="s1">product)</span><span class="s0">;</span>
+            <span class="s1">System.out.println(</span><span class="s2">&quot;Product added: &quot; </span><span class="s1">+ product)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">updateProduct(String productId</span><span class="s0">, int </span><span class="s1">quantity</span><span class="s0">, double </span><span class="s1">price) {</span>
+        <span class="s0">if </span><span class="s1">(products.containsKey(productId)) {</span>
+            <span class="s1">Product product = products.get(productId)</span><span class="s0">;</span>
+            <span class="s1">product.setQuantity(quantity)</span><span class="s0">;</span>
+            <span class="s1">product.setPrice(price)</span><span class="s0">;</span>
+            <span class="s1">System.out.println(</span><span class="s2">&quot;Product updated: &quot; </span><span class="s1">+ product)</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s1">System.out.println(</span><span class="s2">&quot;Product ID &quot; </span><span class="s1">+ productId + </span><span class="s2">&quot; not found.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">deleteProduct(String productId) {</span>
+        <span class="s0">if </span><span class="s1">(products.containsKey(productId)) {</span>
+            <span class="s1">Product removedProduct = products.remove(productId)</span><span class="s0">;</span>
+            <span class="s1">System.out.println(</span><span class="s2">&quot;Product removed: &quot; </span><span class="s1">+ removedProduct)</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s1">System.out.println(</span><span class="s2">&quot;Product ID &quot; </span><span class="s1">+ productId + </span><span class="s2">&quot; not found.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">displayProducts() {</span>
+        <span class="s0">if </span><span class="s1">(products.isEmpty()) {</span>
+            <span class="s1">System.out.println(</span><span class="s2">&quot;No products in inventory.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s0">for </span><span class="s1">(Product product : products.values()) {</span>
+                <span class="s1">System.out.println(product)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public static void </span><span class="s1">main(String[] args) {</span>
+        <span class="s1">Inventory invent = </span><span class="s0">new </span><span class="s1">Inventory()</span><span class="s0">;</span>
+
+        <span class="s1">Product product1 = </span><span class="s0">new </span><span class="s1">Product(</span><span class="s2">&quot;001&quot;</span><span class="s0">, </span><span class="s2">&quot;Headphone&quot;</span><span class="s0">, </span><span class="s3">10</span><span class="s0">, </span><span class="s3">1999.99</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Product product2 = </span><span class="s0">new </span><span class="s1">Product(</span><span class="s2">&quot;002&quot;</span><span class="s0">, </span><span class="s2">&quot;Desktop&quot;</span><span class="s0">, </span><span class="s3">20</span><span class="s0">, </span><span class="s3">49999.99</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s1">invent.addProduct(product1)</span><span class="s0">;</span>
+        <span class="s1">invent.addProduct(product2)</span><span class="s0">;</span>
+
+        <span class="s1">invent.displayProducts()</span><span class="s0">;</span>
+
+        <span class="s1">invent.updateProduct(</span><span class="s2">&quot;001&quot;</span><span class="s0">, </span><span class="s3">15</span><span class="s0">, </span><span class="s3">1099.99</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">invent.displayProducts()</span><span class="s0">;</span>
+
+        <span class="s1">invent.deleteProduct(</span><span class="s2">&quot;002&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">invent.displayProducts()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>
